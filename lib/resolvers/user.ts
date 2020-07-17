@@ -1,7 +1,7 @@
-import { objectType } from "@nexus/schema";
+import { objectType, extendType } from '@nexus/schema';
 
 export const Users = objectType({
-  name: "User",
+  name: 'User',
   definition(t) {
     t.model.username();
     // t.model.avatar()
@@ -13,13 +13,14 @@ export const Users = objectType({
     //   alias: "roles"
     // })
     t.model.slug();
-    t.string("profileLink", {
+    t.string('profileLink', {
       resolve(user) {
-        return "test";
+        return 'test';
       },
     });
+
     t.model.created_at({
-      alias: "createdAt",
+      alias: 'createdAt',
     });
     // t.model.user_group_likes({
     //   alias: "groupLikes"
@@ -37,5 +38,13 @@ export const Users = objectType({
     //     // connectionFromArray
     //   }
     // })
+  },
+});
+
+export const userQueries = extendType({
+  type: 'Query',
+  definition(t) {
+    t.crud.user();
+    t.crud.users({ ordering: true });
   },
 });

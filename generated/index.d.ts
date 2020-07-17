@@ -19,476 +19,35 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  AccountFilter: { // input type
-    every?: NexusGenInputs['AccountWhereInput'] | null; // AccountWhereInput
-    none?: NexusGenInputs['AccountWhereInput'] | null; // AccountWhereInput
-    some?: NexusGenInputs['AccountWhereInput'] | null; // AccountWhereInput
-  }
-  AccountWhereInput: { // input type
-    access_token?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    access_token_expires?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    AND?: NexusGenInputs['AccountWhereInput'][] | null; // [AccountWhereInput!]
-    compound_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['AccountWhereInput'][] | null; // [AccountWhereInput!]
-    OR?: NexusGenInputs['AccountWhereInput'][] | null; // [AccountWhereInput!]
-    provider_account_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    provider_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    provider_type?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    refresh_token?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    updated_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    user_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    users?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-  }
-  ArtistAliasFilter: { // input type
-    every?: NexusGenInputs['ArtistAliasWhereInput'] | null; // ArtistAliasWhereInput
-    none?: NexusGenInputs['ArtistAliasWhereInput'] | null; // ArtistAliasWhereInput
-    some?: NexusGenInputs['ArtistAliasWhereInput'] | null; // ArtistAliasWhereInput
-  }
-  ArtistAliasWhereInput: { // input type
-    alias?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    AND?: NexusGenInputs['ArtistAliasWhereInput'][] | null; // [ArtistAliasWhereInput!]
-    artists?: NexusGenInputs['ArtistWhereInput'] | null; // ArtistWhereInput
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    idol_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['ArtistAliasWhereInput'][] | null; // [ArtistAliasWhereInput!]
-    OR?: NexusGenInputs['ArtistAliasWhereInput'][] | null; // [ArtistAliasWhereInput!]
-    updated_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-  }
-  ArtistFilter: { // input type
-    every?: NexusGenInputs['ArtistWhereInput'] | null; // ArtistWhereInput
-    none?: NexusGenInputs['ArtistWhereInput'] | null; // ArtistWhereInput
-    some?: NexusGenInputs['ArtistWhereInput'] | null; // ArtistWhereInput
-  }
-  ArtistWhereInput: { // input type
-    aliases?: NexusGenInputs['ArtistAliasFilter'] | null; // ArtistAliasFilter
-    AND?: NexusGenInputs['ArtistWhereInput'][] | null; // [ArtistWhereInput!]
-    banner?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    banner_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    birth_city?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    birth_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    birth_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    blood_type?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    country_of_origin?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    full_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    gender?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    genders?: NexusGenInputs['gendersWhereInput'] | null; // gendersWhereInput
-    group?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    group_members?: NexusGenInputs['GroupMemberFilter'] | null; // GroupMemberFilter
-    height?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    image?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    image_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    instagram_username?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    korean_stage_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    melon_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    native_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    NOT?: NexusGenInputs['ArtistWhereInput'][] | null; // [ArtistWhereInput!]
-    OR?: NexusGenInputs['ArtistWhereInput'][] | null; // [ArtistWhereInput!]
-    primary_group_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    stage_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    thumbnail?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    twitter_handle?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    weight?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    youtube_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+  ArtistOrderByInput: { // input type
+    banner_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    birth_city?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    birth_date?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    birth_date_precision?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    blood_type?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    country_of_origin?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    created_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    description?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    full_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    gender?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    height?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    image_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    instagram_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    korean_stage_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    melon_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    native_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    primary_group_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    stage_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    thumbnail?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    twitter_handle?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    updated_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    weight?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    youtube_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
   }
   ArtistWhereUniqueInput: { // input type
     id?: number | null; // Int
     melon_id?: number | null; // Int
-  }
-  BooleanFilter: { // input type
-    equals?: boolean | null; // Boolean
-    not?: boolean | null; // Boolean
-  }
-  CompanyWhereInput: { // input type
-    AND?: NexusGenInputs['CompanyWhereInput'][] | null; // [CompanyWhereInput!]
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    defunct_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    defunct_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    founded_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    founded_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    group_companies?: NexusGenInputs['GroupCompanyFilter'] | null; // GroupCompanyFilter
-    groups?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    logo?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['CompanyWhereInput'][] | null; // [CompanyWhereInput!]
-    OR?: NexusGenInputs['CompanyWhereInput'][] | null; // [CompanyWhereInput!]
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-  }
-  DateTimeFilter: { // input type
-    equals?: any | null; // DateTime
-    gt?: any | null; // DateTime
-    gte?: any | null; // DateTime
-    in?: any[] | null; // [DateTime!]
-    lt?: any | null; // DateTime
-    lte?: any | null; // DateTime
-    not?: any | null; // DateTime
-    notIn?: any[] | null; // [DateTime!]
-  }
-  GroupAliasFilter: { // input type
-    every?: NexusGenInputs['GroupAliasWhereInput'] | null; // GroupAliasWhereInput
-    none?: NexusGenInputs['GroupAliasWhereInput'] | null; // GroupAliasWhereInput
-    some?: NexusGenInputs['GroupAliasWhereInput'] | null; // GroupAliasWhereInput
-  }
-  GroupAliasWhereInput: { // input type
-    alias?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    AND?: NexusGenInputs['GroupAliasWhereInput'][] | null; // [GroupAliasWhereInput!]
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    groups?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    NOT?: NexusGenInputs['GroupAliasWhereInput'][] | null; // [GroupAliasWhereInput!]
-    OR?: NexusGenInputs['GroupAliasWhereInput'][] | null; // [GroupAliasWhereInput!]
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-  }
-  GroupCompanyFilter: { // input type
-    every?: NexusGenInputs['GroupCompanyWhereInput'] | null; // GroupCompanyWhereInput
-    none?: NexusGenInputs['GroupCompanyWhereInput'] | null; // GroupCompanyWhereInput
-    some?: NexusGenInputs['GroupCompanyWhereInput'] | null; // GroupCompanyWhereInput
-  }
-  GroupCompanyWhereInput: { // input type
-    AND?: NexusGenInputs['GroupCompanyWhereInput'][] | null; // [GroupCompanyWhereInput!]
-    comment?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    companies?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
-    company_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    end_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    groups?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['GroupCompanyWhereInput'][] | null; // [GroupCompanyWhereInput!]
-    OR?: NexusGenInputs['GroupCompanyWhereInput'][] | null; // [GroupCompanyWhereInput!]
-    reference_url?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    start_date?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-  }
-  GroupFilter: { // input type
-    every?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    none?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    some?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-  }
-  GroupHiatusFilter: { // input type
-    every?: NexusGenInputs['GroupHiatusWhereInput'] | null; // GroupHiatusWhereInput
-    none?: NexusGenInputs['GroupHiatusWhereInput'] | null; // GroupHiatusWhereInput
-    some?: NexusGenInputs['GroupHiatusWhereInput'] | null; // GroupHiatusWhereInput
-  }
-  GroupHiatusWhereInput: { // input type
-    AND?: NexusGenInputs['GroupHiatusWhereInput'][] | null; // [GroupHiatusWhereInput!]
-    end_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    group?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['GroupHiatusWhereInput'][] | null; // [GroupHiatusWhereInput!]
-    OR?: NexusGenInputs['GroupHiatusWhereInput'][] | null; // [GroupHiatusWhereInput!]
-    reference_url?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    start_date?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-  }
-  GroupMemberFilter: { // input type
-    every?: NexusGenInputs['GroupMemberWhereInput'] | null; // GroupMemberWhereInput
-    none?: NexusGenInputs['GroupMemberWhereInput'] | null; // GroupMemberWhereInput
-    some?: NexusGenInputs['GroupMemberWhereInput'] | null; // GroupMemberWhereInput
-  }
-  GroupMemberRoleFilter: { // input type
-    every?: NexusGenInputs['GroupMemberRoleWhereInput'] | null; // GroupMemberRoleWhereInput
-    none?: NexusGenInputs['GroupMemberRoleWhereInput'] | null; // GroupMemberRoleWhereInput
-    some?: NexusGenInputs['GroupMemberRoleWhereInput'] | null; // GroupMemberRoleWhereInput
-  }
-  GroupMemberRoleWhereInput: { // input type
-    AND?: NexusGenInputs['GroupMemberRoleWhereInput'][] | null; // [GroupMemberRoleWhereInput!]
-    group_members?: NexusGenInputs['GroupMemberWhereInput'] | null; // GroupMemberWhereInput
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    member_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['GroupMemberRoleWhereInput'][] | null; // [GroupMemberRoleWhereInput!]
-    OR?: NexusGenInputs['GroupMemberRoleWhereInput'][] | null; // [GroupMemberRoleWhereInput!]
-    role_name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-  }
-  GroupMemberWhereInput: { // input type
-    AND?: NexusGenInputs['GroupMemberWhereInput'][] | null; // [GroupMemberWhereInput!]
-    artist?: NexusGenInputs['ArtistWhereInput'] | null; // ArtistWhereInput
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    departure_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    departure_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    group?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    group_member_roles?: NexusGenInputs['GroupMemberRoleFilter'] | null; // GroupMemberRoleFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    idol_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    join_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    join_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    NOT?: NexusGenInputs['GroupMemberWhereInput'][] | null; // [GroupMemberWhereInput!]
-    OR?: NexusGenInputs['GroupMemberWhereInput'][] | null; // [GroupMemberWhereInput!]
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-  }
-  GroupMemberWhereUniqueInput: { // input type
-    group_id?: number | null; // Int
-    group_members_group_id_idol_id_key?: NexusGenInputs['Group_members_group_id_idol_id_keyCompoundUniqueInput'] | null; // Group_members_group_id_idol_id_keyCompoundUniqueInput
-    id?: number | null; // Int
-  }
-  GroupOrderByInput: { // input type
-    banner_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    company_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    created_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    debut_date?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    debut_date_precision?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    description?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    disband_date?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    disband_date_precision?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    discord_server_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    facebook_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    fan_cafe_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    fandom_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    image_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    instagram_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    korean_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    melon_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    parent_group_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    spotify_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    status?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    tiktok_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    twitter_handle?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    type?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    updated_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    vlive_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    website_url?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-    youtube_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
-  }
-  GroupWhereInput: { // input type
-    AND?: NexusGenInputs['GroupWhereInput'][] | null; // [GroupWhereInput!]
-    banner?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    banner_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    companies?: NexusGenInputs['CompanyWhereInput'] | null; // CompanyWhereInput
-    company_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    debut_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    debut_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    disband_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    disband_date_precision?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    discord_server_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    facebook_username?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    fan_cafe_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    fandom_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    group_aliases?: NexusGenInputs['GroupAliasFilter'] | null; // GroupAliasFilter
-    group_companies?: NexusGenInputs['GroupCompanyFilter'] | null; // GroupCompanyFilter
-    group_hiatuses?: NexusGenInputs['GroupHiatusFilter'] | null; // GroupHiatusFilter
-    group_members?: NexusGenInputs['GroupMemberFilter'] | null; // GroupMemberFilter
-    group_status?: NexusGenInputs['group_statusWhereInput'] | null; // group_statusWhereInput
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    idols?: NexusGenInputs['ArtistFilter'] | null; // ArtistFilter
-    image?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    image_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    instagram_username?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    korean_name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    melon_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['GroupWhereInput'][] | null; // [GroupWhereInput!]
-    OR?: NexusGenInputs['GroupWhereInput'][] | null; // [GroupWhereInput!]
-    parent_group?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    parent_group_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    releases?: NexusGenInputs['ReleaseFilter'] | null; // ReleaseFilter
-    songs?: NexusGenInputs['SongFilter'] | null; // SongFilter
-    spotify_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    status?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    subunits?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
-    tiktok_username?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    twitter_handle?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    type?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    user_group_likes?: NexusGenInputs['UserGroupLikeFilter'] | null; // UserGroupLikeFilter
-    vlive_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    website_url?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    youtube_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-  }
-  GroupWhereUniqueInput: { // input type
-    id?: number | null; // Int
-    melon_id?: number | null; // Int
-  }
-  Group_members_group_id_idol_id_keyCompoundUniqueInput: { // input type
-    group_id: number; // Int!
-    idol_id: number; // Int!
-  }
-  IntFilter: { // input type
-    equals?: number | null; // Int
-    gt?: number | null; // Int
-    gte?: number | null; // Int
-    in?: number[] | null; // [Int!]
-    lt?: number | null; // Int
-    lte?: number | null; // Int
-    not?: number | null; // Int
-    notIn?: number[] | null; // [Int!]
-  }
-  NullableBooleanFilter: { // input type
-    equals?: boolean | null; // Boolean
-    not?: boolean | null; // Boolean
-  }
-  NullableDateTimeFilter: { // input type
-    equals?: any | null; // DateTime
-    gt?: any | null; // DateTime
-    gte?: any | null; // DateTime
-    in?: any[] | null; // [DateTime!]
-    lt?: any | null; // DateTime
-    lte?: any | null; // DateTime
-    not?: any | null; // DateTime
-    notIn?: any[] | null; // [DateTime!]
-  }
-  NullableIntFilter: { // input type
-    equals?: number | null; // Int
-    gt?: number | null; // Int
-    gte?: number | null; // Int
-    in?: number[] | null; // [Int!]
-    lt?: number | null; // Int
-    lte?: number | null; // Int
-    not?: number | null; // Int
-    notIn?: number[] | null; // [Int!]
-  }
-  NullableStringFilter: { // input type
-    contains?: string | null; // String
-    endsWith?: string | null; // String
-    equals?: string | null; // String
-    gt?: string | null; // String
-    gte?: string | null; // String
-    in?: string[] | null; // [String!]
-    lt?: string | null; // String
-    lte?: string | null; // String
-    not?: string | null; // String
-    notIn?: string[] | null; // [String!]
-    startsWith?: string | null; // String
-  }
-  ReleaseFilter: { // input type
-    every?: NexusGenInputs['ReleaseWhereInput'] | null; // ReleaseWhereInput
-    none?: NexusGenInputs['ReleaseWhereInput'] | null; // ReleaseWhereInput
-    some?: NexusGenInputs['ReleaseWhereInput'] | null; // ReleaseWhereInput
-  }
-  ReleaseSongFilter: { // input type
-    every?: NexusGenInputs['ReleaseSongWhereInput'] | null; // ReleaseSongWhereInput
-    none?: NexusGenInputs['ReleaseSongWhereInput'] | null; // ReleaseSongWhereInput
-    some?: NexusGenInputs['ReleaseSongWhereInput'] | null; // ReleaseSongWhereInput
-  }
-  ReleaseSongWhereInput: { // input type
-    AND?: NexusGenInputs['ReleaseSongWhereInput'][] | null; // [ReleaseSongWhereInput!]
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    date_added?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    is_title_track?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
-    NOT?: NexusGenInputs['ReleaseSongWhereInput'][] | null; // [ReleaseSongWhereInput!]
-    OR?: NexusGenInputs['ReleaseSongWhereInput'][] | null; // [ReleaseSongWhereInput!]
-    release_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    releases?: NexusGenInputs['ReleaseWhereInput'] | null; // ReleaseWhereInput
-    song_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    songs?: NexusGenInputs['SongWhereInput'] | null; // SongWhereInput
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-  }
-  ReleaseWhereInput: { // input type
-    album_cover?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    album_cover_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    AND?: NexusGenInputs['ReleaseWhereInput'][] | null; // [ReleaseWhereInput!]
-    cover?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    description?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    genre?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    groups?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    melon_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['ReleaseWhereInput'][] | null; // [ReleaseWhereInput!]
-    OR?: NexusGenInputs['ReleaseWhereInput'][] | null; // [ReleaseWhereInput!]
-    release_date?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    release_date_precision?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    release_songs?: NexusGenInputs['ReleaseSongFilter'] | null; // ReleaseSongFilter
-    release_types?: NexusGenInputs['release_typesWhereInput'] | null; // release_typesWhereInput
-    songs?: NexusGenInputs['SongFilter'] | null; // SongFilter
-    spotify_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-  }
-  RoleWhereInput: { // input type
-    AND?: NexusGenInputs['RoleWhereInput'][] | null; // [RoleWhereInput!]
-    NOT?: NexusGenInputs['RoleWhereInput'][] | null; // [RoleWhereInput!]
-    OR?: NexusGenInputs['RoleWhereInput'][] | null; // [RoleWhereInput!]
-    role_name?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    user_roles?: NexusGenInputs['UserRoleFilter'] | null; // UserRoleFilter
-  }
-  SongFilter: { // input type
-    every?: NexusGenInputs['SongWhereInput'] | null; // SongWhereInput
-    none?: NexusGenInputs['SongWhereInput'] | null; // SongWhereInput
-    some?: NexusGenInputs['SongWhereInput'] | null; // SongWhereInput
-  }
-  SongWhereInput: { // input type
-    AND?: NexusGenInputs['SongWhereInput'][] | null; // [SongWhereInput!]
-    created_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    groups?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    korean_name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    language?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    length?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    melon_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    mv_link?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    NOT?: NexusGenInputs['SongWhereInput'][] | null; // [SongWhereInput!]
-    OR?: NexusGenInputs['SongWhereInput'][] | null; // [SongWhereInput!]
-    release_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    release_songs?: NexusGenInputs['ReleaseSongFilter'] | null; // ReleaseSongFilter
-    releases?: NexusGenInputs['ReleaseWhereInput'] | null; // ReleaseWhereInput
-    spotify_link?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-  }
-  StringFilter: { // input type
-    contains?: string | null; // String
-    endsWith?: string | null; // String
-    equals?: string | null; // String
-    gt?: string | null; // String
-    gte?: string | null; // String
-    in?: string[] | null; // [String!]
-    lt?: string | null; // String
-    lte?: string | null; // String
-    not?: string | null; // String
-    notIn?: string[] | null; // [String!]
-    startsWith?: string | null; // String
-  }
-  SubmissionFilter: { // input type
-    every?: NexusGenInputs['SubmissionWhereInput'] | null; // SubmissionWhereInput
-    none?: NexusGenInputs['SubmissionWhereInput'] | null; // SubmissionWhereInput
-    some?: NexusGenInputs['SubmissionWhereInput'] | null; // SubmissionWhereInput
-  }
-  SubmissionWhereInput: { // input type
-    AND?: NexusGenInputs['SubmissionWhereInput'][] | null; // [SubmissionWhereInput!]
-    comment?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['SubmissionWhereInput'][] | null; // [SubmissionWhereInput!]
-    OR?: NexusGenInputs['SubmissionWhereInput'][] | null; // [SubmissionWhereInput!]
-    updated_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    user_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    users?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-  }
-  UserFilter: { // input type
-    every?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    none?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    some?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-  }
-  UserGroupLikeFilter: { // input type
-    every?: NexusGenInputs['UserGroupLikeWhereInput'] | null; // UserGroupLikeWhereInput
-    none?: NexusGenInputs['UserGroupLikeWhereInput'] | null; // UserGroupLikeWhereInput
-    some?: NexusGenInputs['UserGroupLikeWhereInput'] | null; // UserGroupLikeWhereInput
-  }
-  UserGroupLikeWhereInput: { // input type
-    AND?: NexusGenInputs['UserGroupLikeWhereInput'][] | null; // [UserGroupLikeWhereInput!]
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    group_id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    groups?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['UserGroupLikeWhereInput'][] | null; // [UserGroupLikeWhereInput!]
-    OR?: NexusGenInputs['UserGroupLikeWhereInput'][] | null; // [UserGroupLikeWhereInput!]
-    updated_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    user_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    users?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
   UserOrderByInput: { // input type
     avatar_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
@@ -509,137 +68,21 @@ export interface NexusGenInputs {
     updated_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
   }
-  UserRefreshTokenFilter: { // input type
-    every?: NexusGenInputs['UserRefreshTokenWhereInput'] | null; // UserRefreshTokenWhereInput
-    none?: NexusGenInputs['UserRefreshTokenWhereInput'] | null; // UserRefreshTokenWhereInput
-    some?: NexusGenInputs['UserRefreshTokenWhereInput'] | null; // UserRefreshTokenWhereInput
-  }
-  UserRefreshTokenWhereInput: { // input type
-    AND?: NexusGenInputs['UserRefreshTokenWhereInput'][] | null; // [UserRefreshTokenWhereInput!]
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    expires_in?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    is_valid?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
-    NOT?: NexusGenInputs['UserRefreshTokenWhereInput'][] | null; // [UserRefreshTokenWhereInput!]
-    OR?: NexusGenInputs['UserRefreshTokenWhereInput'][] | null; // [UserRefreshTokenWhereInput!]
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    user_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    users?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-  }
-  UserRoleFilter: { // input type
-    every?: NexusGenInputs['UserRoleWhereInput'] | null; // UserRoleWhereInput
-    none?: NexusGenInputs['UserRoleWhereInput'] | null; // UserRoleWhereInput
-    some?: NexusGenInputs['UserRoleWhereInput'] | null; // UserRoleWhereInput
-  }
-  UserRoleWhereInput: { // input type
-    AND?: NexusGenInputs['UserRoleWhereInput'][] | null; // [UserRoleWhereInput!]
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    NOT?: NexusGenInputs['UserRoleWhereInput'][] | null; // [UserRoleWhereInput!]
-    OR?: NexusGenInputs['UserRoleWhereInput'][] | null; // [UserRoleWhereInput!]
-    role?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    roles?: NexusGenInputs['RoleWhereInput'] | null; // RoleWhereInput
-    user_id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    users?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-  }
-  UserWhereInput: { // input type
-    accounts?: NexusGenInputs['AccountFilter'] | null; // AccountFilter
-    AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    avatar?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    avatar_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    banned?: NexusGenInputs['BooleanFilter'] | null; // BooleanFilter
-    banner?: NexusGenInputs['mediaWhereInput'] | null; // mediaWhereInput
-    banner_id?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
-    bio?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    discord_user_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    discord_username?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    email?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    email_verified?: NexusGenInputs['NullableBooleanFilter'] | null; // NullableBooleanFilter
-    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    image?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    locale?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    password_hash?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    slug?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    submissions?: NexusGenInputs['SubmissionFilter'] | null; // SubmissionFilter
-    twitter_user_id?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    updated_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    user_group_likes?: NexusGenInputs['UserGroupLikeFilter'] | null; // UserGroupLikeFilter
-    user_refresh_tokens?: NexusGenInputs['UserRefreshTokenFilter'] | null; // UserRefreshTokenFilter
-    user_roles?: NexusGenInputs['UserRoleFilter'] | null; // UserRoleFilter
-    username?: NexusGenInputs['StringFilter'] | null; // StringFilter
-  }
   UserWhereUniqueInput: { // input type
     email?: string | null; // String
     id?: string | null; // String
     slug?: string | null; // String
   }
-  gendersWhereInput: { // input type
-    AND?: NexusGenInputs['gendersWhereInput'][] | null; // [gendersWhereInput!]
-    comment?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    gender?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    idols?: NexusGenInputs['ArtistFilter'] | null; // ArtistFilter
-    NOT?: NexusGenInputs['gendersWhereInput'][] | null; // [gendersWhereInput!]
-    OR?: NexusGenInputs['gendersWhereInput'][] | null; // [gendersWhereInput!]
-  }
-  group_statusWhereInput: { // input type
-    AND?: NexusGenInputs['group_statusWhereInput'][] | null; // [group_statusWhereInput!]
-    comment?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    groups?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
-    NOT?: NexusGenInputs['group_statusWhereInput'][] | null; // [group_statusWhereInput!]
-    OR?: NexusGenInputs['group_statusWhereInput'][] | null; // [group_statusWhereInput!]
-    status?: NexusGenInputs['StringFilter'] | null; // StringFilter
-  }
-  mediaWhereInput: { // input type
-    AND?: NexusGenInputs['mediaWhereInput'][] | null; // [mediaWhereInput!]
-    created_at?: NexusGenInputs['DateTimeFilter'] | null; // DateTimeFilter
-    groups_groups_banner_idTomedia?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
-    groups_groups_image_idTomedia?: NexusGenInputs['GroupFilter'] | null; // GroupFilter
-    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    idols_idols_banner_idTomedia?: NexusGenInputs['ArtistFilter'] | null; // ArtistFilter
-    idols_idols_image_idTomedia?: NexusGenInputs['ArtistFilter'] | null; // ArtistFilter
-    lg?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    md?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    NOT?: NexusGenInputs['mediaWhereInput'][] | null; // [mediaWhereInput!]
-    object_position_x?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    object_position_y?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    OR?: NexusGenInputs['mediaWhereInput'][] | null; // [mediaWhereInput!]
-    original_url?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    releases?: NexusGenInputs['ReleaseFilter'] | null; // ReleaseFilter
-    slug?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    sm?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
-    updated_at?: NexusGenInputs['NullableDateTimeFilter'] | null; // NullableDateTimeFilter
-    users_mediaTousers_avatar_id?: NexusGenInputs['UserFilter'] | null; // UserFilter
-    users_mediaTousers_banner_id?: NexusGenInputs['UserFilter'] | null; // UserFilter
-  }
-  release_typesWhereInput: { // input type
-    AND?: NexusGenInputs['release_typesWhereInput'][] | null; // [release_typesWhereInput!]
-    comment?: NexusGenInputs['StringFilter'] | null; // StringFilter
-    NOT?: NexusGenInputs['release_typesWhereInput'][] | null; // [release_typesWhereInput!]
-    OR?: NexusGenInputs['release_typesWhereInput'][] | null; // [release_typesWhereInput!]
-    releases?: NexusGenInputs['ReleaseFilter'] | null; // ReleaseFilter
-    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
-  }
 }
 
 export interface NexusGenEnums {
-  GroupGender: "BOY_BAND" | "COED" | "GIRL_GROUP" | "UNKNOWN"
-  GroupStatus: "ACTIVE" | "DISBANDED" | "DISBANDING" | "HIATUS" | "PRE_DEBUT"
-  GroupType: "GROUP" | "SOLO"
   OrderByArg: "asc" | "desc"
 }
 
 export interface NexusGenRootTypes {
-  Artist: {};
-  Group: { // root type
-    description?: string | null; // String
-    id: number; // Int!
-    name: string; // String!
-    type?: string | null; // String
+  Artist: { // root type
+    stage_name?: string | null; // String
   }
-  GroupMember: {};
   Query: {};
   User: { // root type
     banned: boolean; // Boolean!
@@ -657,115 +100,20 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  AccountFilter: NexusGenInputs['AccountFilter'];
-  AccountWhereInput: NexusGenInputs['AccountWhereInput'];
-  ArtistAliasFilter: NexusGenInputs['ArtistAliasFilter'];
-  ArtistAliasWhereInput: NexusGenInputs['ArtistAliasWhereInput'];
-  ArtistFilter: NexusGenInputs['ArtistFilter'];
-  ArtistWhereInput: NexusGenInputs['ArtistWhereInput'];
+  ArtistOrderByInput: NexusGenInputs['ArtistOrderByInput'];
   ArtistWhereUniqueInput: NexusGenInputs['ArtistWhereUniqueInput'];
-  BooleanFilter: NexusGenInputs['BooleanFilter'];
-  CompanyWhereInput: NexusGenInputs['CompanyWhereInput'];
-  DateTimeFilter: NexusGenInputs['DateTimeFilter'];
-  GroupAliasFilter: NexusGenInputs['GroupAliasFilter'];
-  GroupAliasWhereInput: NexusGenInputs['GroupAliasWhereInput'];
-  GroupCompanyFilter: NexusGenInputs['GroupCompanyFilter'];
-  GroupCompanyWhereInput: NexusGenInputs['GroupCompanyWhereInput'];
-  GroupFilter: NexusGenInputs['GroupFilter'];
-  GroupHiatusFilter: NexusGenInputs['GroupHiatusFilter'];
-  GroupHiatusWhereInput: NexusGenInputs['GroupHiatusWhereInput'];
-  GroupMemberFilter: NexusGenInputs['GroupMemberFilter'];
-  GroupMemberRoleFilter: NexusGenInputs['GroupMemberRoleFilter'];
-  GroupMemberRoleWhereInput: NexusGenInputs['GroupMemberRoleWhereInput'];
-  GroupMemberWhereInput: NexusGenInputs['GroupMemberWhereInput'];
-  GroupMemberWhereUniqueInput: NexusGenInputs['GroupMemberWhereUniqueInput'];
-  GroupOrderByInput: NexusGenInputs['GroupOrderByInput'];
-  GroupWhereInput: NexusGenInputs['GroupWhereInput'];
-  GroupWhereUniqueInput: NexusGenInputs['GroupWhereUniqueInput'];
-  Group_members_group_id_idol_id_keyCompoundUniqueInput: NexusGenInputs['Group_members_group_id_idol_id_keyCompoundUniqueInput'];
-  IntFilter: NexusGenInputs['IntFilter'];
-  NullableBooleanFilter: NexusGenInputs['NullableBooleanFilter'];
-  NullableDateTimeFilter: NexusGenInputs['NullableDateTimeFilter'];
-  NullableIntFilter: NexusGenInputs['NullableIntFilter'];
-  NullableStringFilter: NexusGenInputs['NullableStringFilter'];
-  ReleaseFilter: NexusGenInputs['ReleaseFilter'];
-  ReleaseSongFilter: NexusGenInputs['ReleaseSongFilter'];
-  ReleaseSongWhereInput: NexusGenInputs['ReleaseSongWhereInput'];
-  ReleaseWhereInput: NexusGenInputs['ReleaseWhereInput'];
-  RoleWhereInput: NexusGenInputs['RoleWhereInput'];
-  SongFilter: NexusGenInputs['SongFilter'];
-  SongWhereInput: NexusGenInputs['SongWhereInput'];
-  StringFilter: NexusGenInputs['StringFilter'];
-  SubmissionFilter: NexusGenInputs['SubmissionFilter'];
-  SubmissionWhereInput: NexusGenInputs['SubmissionWhereInput'];
-  UserFilter: NexusGenInputs['UserFilter'];
-  UserGroupLikeFilter: NexusGenInputs['UserGroupLikeFilter'];
-  UserGroupLikeWhereInput: NexusGenInputs['UserGroupLikeWhereInput'];
   UserOrderByInput: NexusGenInputs['UserOrderByInput'];
-  UserRefreshTokenFilter: NexusGenInputs['UserRefreshTokenFilter'];
-  UserRefreshTokenWhereInput: NexusGenInputs['UserRefreshTokenWhereInput'];
-  UserRoleFilter: NexusGenInputs['UserRoleFilter'];
-  UserRoleWhereInput: NexusGenInputs['UserRoleWhereInput'];
-  UserWhereInput: NexusGenInputs['UserWhereInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
-  gendersWhereInput: NexusGenInputs['gendersWhereInput'];
-  group_statusWhereInput: NexusGenInputs['group_statusWhereInput'];
-  mediaWhereInput: NexusGenInputs['mediaWhereInput'];
-  release_typesWhereInput: NexusGenInputs['release_typesWhereInput'];
-  GroupGender: NexusGenEnums['GroupGender'];
-  GroupStatus: NexusGenEnums['GroupStatus'];
-  GroupType: NexusGenEnums['GroupType'];
   OrderByArg: NexusGenEnums['OrderByArg'];
 }
 
 export interface NexusGenFieldTypes {
   Artist: { // field return type
-    age: number | null; // Int
-    birthDate: any | null; // DateTime
-    koreanAge: number | null; // Int
-    stageName: string | null; // String
-  }
-  Group: { // field return type
-    companyName: string | null; // String
-    createdAt: any | null; // DateTime
-    debutDate: any | null; // DateTime
-    debutDatePrecision: string | null; // String
-    description: string | null; // String
-    disbandDate: any | null; // DateTime
-    disbandDatePrecision: string | null; // String
-    discordServerId: string | null; // String
-    facebookUsername: string | null; // String
-    fanCafeId: string | null; // String
-    fandomName: string | null; // String
-    gender: NexusGenEnums['GroupGender']; // GroupGender!
-    id: number; // Int!
-    instagramUsername: string | null; // String
-    isSubunit: boolean; // Boolean!
-    koreanName: string; // String!
-    likeCount: number; // Int!
-    likedBy: NexusGenRootTypes['User'][]; // [User!]!
-    members: NexusGenRootTypes['GroupMember'][]; // [GroupMember!]!
-    name: string; // String!
-    parentGroup: NexusGenRootTypes['Group'] | null; // Group
-    spotifyId: string | null; // String
-    status: NexusGenEnums['GroupStatus']; // GroupStatus!
-    subunits: NexusGenRootTypes['Group'][]; // [Group!]!
-    tiktokUsername: string | null; // String
-    type: string | null; // String
-    updatedAt: any | null; // DateTime
-    vliveId: string | null; // String
-    websiteUrl: string | null; // String
-    youtubeId: string | null; // String
-  }
-  GroupMember: { // field return type
-    artist: NexusGenRootTypes['Artist']; // Artist!
-    group: NexusGenRootTypes['Group']; // Group!
+    stage_name: string | null; // String
   }
   Query: { // field return type
     artist: NexusGenRootTypes['Artist'] | null; // Artist
     artists: NexusGenRootTypes['Artist'][]; // [Artist!]!
-    group: NexusGenRootTypes['Group'] | null; // Group
-    groups: NexusGenRootTypes['Group'][]; // [Group!]!
     user: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][]; // [User!]!
   }
@@ -781,36 +129,15 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenArgTypes {
-  Group: {
-    members: { // args
-      cursor?: NexusGenInputs['GroupMemberWhereUniqueInput'] | null; // GroupMemberWhereUniqueInput
-      skip?: number | null; // Int
-      take?: number | null; // Int
-    }
-    subunits: { // args
-      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      skip?: number | null; // Int
-      take?: number | null; // Int
-    }
-  }
   Query: {
     artist: { // args
       where: NexusGenInputs['ArtistWhereUniqueInput']; // ArtistWhereUniqueInput!
     }
     artists: { // args
       cursor?: NexusGenInputs['ArtistWhereUniqueInput'] | null; // ArtistWhereUniqueInput
+      orderBy?: NexusGenInputs['ArtistOrderByInput'] | null; // ArtistOrderByInput
       skip?: number | null; // Int
       take?: number | null; // Int
-    }
-    group: { // args
-      where: NexusGenInputs['GroupWhereUniqueInput']; // GroupWhereUniqueInput!
-    }
-    groups: { // args
-      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      orderBy?: NexusGenInputs['GroupOrderByInput'] | null; // GroupOrderByInput
-      skip?: number | null; // Int
-      take?: number | null; // Int
-      where?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
     }
     user: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -829,11 +156,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Artist" | "Group" | "GroupMember" | "Query" | "User";
+export type NexusGenObjectNames = "Artist" | "Query" | "User";
 
-export type NexusGenInputNames = "AccountFilter" | "AccountWhereInput" | "ArtistAliasFilter" | "ArtistAliasWhereInput" | "ArtistFilter" | "ArtistWhereInput" | "ArtistWhereUniqueInput" | "BooleanFilter" | "CompanyWhereInput" | "DateTimeFilter" | "GroupAliasFilter" | "GroupAliasWhereInput" | "GroupCompanyFilter" | "GroupCompanyWhereInput" | "GroupFilter" | "GroupHiatusFilter" | "GroupHiatusWhereInput" | "GroupMemberFilter" | "GroupMemberRoleFilter" | "GroupMemberRoleWhereInput" | "GroupMemberWhereInput" | "GroupMemberWhereUniqueInput" | "GroupOrderByInput" | "GroupWhereInput" | "GroupWhereUniqueInput" | "Group_members_group_id_idol_id_keyCompoundUniqueInput" | "IntFilter" | "NullableBooleanFilter" | "NullableDateTimeFilter" | "NullableIntFilter" | "NullableStringFilter" | "ReleaseFilter" | "ReleaseSongFilter" | "ReleaseSongWhereInput" | "ReleaseWhereInput" | "RoleWhereInput" | "SongFilter" | "SongWhereInput" | "StringFilter" | "SubmissionFilter" | "SubmissionWhereInput" | "UserFilter" | "UserGroupLikeFilter" | "UserGroupLikeWhereInput" | "UserOrderByInput" | "UserRefreshTokenFilter" | "UserRefreshTokenWhereInput" | "UserRoleFilter" | "UserRoleWhereInput" | "UserWhereInput" | "UserWhereUniqueInput" | "gendersWhereInput" | "group_statusWhereInput" | "mediaWhereInput" | "release_typesWhereInput";
+export type NexusGenInputNames = "ArtistOrderByInput" | "ArtistWhereUniqueInput" | "UserOrderByInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = "GroupGender" | "GroupStatus" | "GroupType" | "OrderByArg";
+export type NexusGenEnumNames = "OrderByArg";
 
 export type NexusGenInterfaceNames = never;
 
