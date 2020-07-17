@@ -3,6 +3,12 @@
 
 
 type Artist {
+  """Artist's age, null if the birth date is not known."""
+  age: Int
+  birth_date: DateTime
+
+  """Artist's korean age, null if the birth date is not known."""
+  koreanAge: Int
   stage_name: String
 }
 
@@ -40,6 +46,135 @@ input ArtistWhereUniqueInput {
 
 scalar DateTime
 
+"""A group or solo act"""
+type Group {
+  companyName: String
+  createdAt: DateTime
+  debutDate: DateTime
+  debutDatePrecision: String
+  description: String
+  disbandDate: DateTime
+  disbandDatePrecision: String
+  discordServerId: String
+  facebookUsername: String
+  fanCafeId: String
+  fandomName: String
+  gender: GroupGender!
+  id: Int!
+  instagramUsername: String
+  isSubunit: Boolean!
+  koreanName: String!
+  likeCount: Int!
+  likedBy: [User!]!
+  members(cursor: GroupMemberWhereUniqueInput, skip: Int, take: Int): [GroupMember!]!
+  name: String!
+  parentGroup: Group
+  spotifyId: String
+  status: GroupStatus!
+  subunits(cursor: GroupWhereUniqueInput, skip: Int, take: Int): [Group!]!
+  tiktokUsername: String
+  type: String
+  updatedAt: DateTime
+  vliveId: String
+  websiteUrl: String
+  youtubeId: String
+}
+
+input Group_members_group_id_idol_id_keyCompoundUniqueInput {
+  group_id: Int!
+  idol_id: Int!
+}
+
+enum GroupGender {
+  """A group with all male members"""
+  BOY_BAND
+
+  """
+  A group with a mixed gender composition. Note: if ever applicable, groups with non-binary
+  group members are considered co-ed
+  """
+  COED
+
+  """A group with all female members"""
+  GIRL_GROUP
+
+  """
+  A group with an unknown gender composition. Usually means
+  there are no members in the group.
+  """
+  UNKNOWN
+}
+
+"""An artist's future, current or past relationship with a group"""
+type GroupMember {
+  artist: Artist!
+  group: Group!
+}
+
+input GroupMemberWhereUniqueInput {
+  group_id: Int
+  group_members_group_id_idol_id_key: Group_members_group_id_idol_id_keyCompoundUniqueInput
+  id: Int
+}
+
+input GroupOrderByInput {
+  banner_id: OrderByArg
+  company_name: OrderByArg
+  created_at: OrderByArg
+  debut_date: OrderByArg
+  debut_date_precision: OrderByArg
+  description: OrderByArg
+  disband_date: OrderByArg
+  disband_date_precision: OrderByArg
+  discord_server_id: OrderByArg
+  facebook_username: OrderByArg
+  fan_cafe_id: OrderByArg
+  fandom_name: OrderByArg
+  id: OrderByArg
+  image_id: OrderByArg
+  instagram_username: OrderByArg
+  korean_name: OrderByArg
+  melon_id: OrderByArg
+  name: OrderByArg
+  parent_group_id: OrderByArg
+  spotify_id: OrderByArg
+  status: OrderByArg
+  tiktok_username: OrderByArg
+  twitter_handle: OrderByArg
+  type: OrderByArg
+  updated_at: OrderByArg
+  vlive_id: OrderByArg
+  website_url: OrderByArg
+  youtube_id: OrderByArg
+}
+
+enum GroupStatus {
+  """A group or solo act that is currently active."""
+  ACTIVE
+
+  """A group or solo act that has officially disbanded."""
+  DISBANDED
+
+  """
+  A group or solo act that has set an official date for disbanding
+  but hasn't disbanded
+  """
+  DISBANDING
+
+  """A group or solo act that is current on an officially confirmed hiatus."""
+  HIATUS
+
+  """
+  A group or solo artist that has a debut date set but has not yet debuted.
+  """
+  PRE_DEBUT
+}
+
+input GroupWhereUniqueInput {
+  id: Int
+  melon_id: Int
+}
+
 enum OrderByArg {
   asc
   desc
@@ -48,6 +183,8 @@ enum OrderByArg {
 type Query {
   artist(where: ArtistWhereUniqueInput!): Artist
   artists(cursor: ArtistWhereUniqueInput, orderBy: ArtistOrderByInput, skip: Int, take: Int): [Artist!]!
+  group(where: GroupWhereUniqueInput!): Group
+  groups(cursor: GroupWhereUniqueInput, orderBy: GroupOrderByInput, skip: Int, take: Int): [Group!]!
   user(where: UserWhereUniqueInput!): User
   users(cursor: UserWhereUniqueInput, orderBy: UserOrderByInput, skip: Int, take: Int): [User!]!
 }

@@ -49,6 +49,49 @@ export interface NexusGenInputs {
     id?: number | null; // Int
     melon_id?: number | null; // Int
   }
+  GroupMemberWhereUniqueInput: { // input type
+    group_id?: number | null; // Int
+    group_members_group_id_idol_id_key?: NexusGenInputs['Group_members_group_id_idol_id_keyCompoundUniqueInput'] | null; // Group_members_group_id_idol_id_keyCompoundUniqueInput
+    id?: number | null; // Int
+  }
+  GroupOrderByInput: { // input type
+    banner_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    company_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    created_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    debut_date?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    debut_date_precision?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    description?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    disband_date?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    disband_date_precision?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    discord_server_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    facebook_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    fan_cafe_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    fandom_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    image_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    instagram_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    korean_name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    melon_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    parent_group_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    spotify_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    status?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    tiktok_username?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    twitter_handle?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    type?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    updated_at?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    vlive_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    website_url?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    youtube_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  GroupWhereUniqueInput: { // input type
+    id?: number | null; // Int
+    melon_id?: number | null; // Int
+  }
+  Group_members_group_id_idol_id_keyCompoundUniqueInput: { // input type
+    group_id: number; // Int!
+    idol_id: number; // Int!
+  }
   UserOrderByInput: { // input type
     avatar_id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     banned?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
@@ -76,13 +119,23 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  GroupGender: "BOY_BAND" | "COED" | "GIRL_GROUP" | "UNKNOWN"
+  GroupStatus: "ACTIVE" | "DISBANDED" | "DISBANDING" | "HIATUS" | "PRE_DEBUT"
   OrderByArg: "asc" | "desc"
 }
 
 export interface NexusGenRootTypes {
   Artist: { // root type
+    birth_date?: any | null; // DateTime
     stage_name?: string | null; // String
   }
+  Group: { // root type
+    description?: string | null; // String
+    id: number; // Int!
+    name: string; // String!
+    type?: string | null; // String
+  }
+  GroupMember: {};
   Query: {};
   User: { // root type
     banned: boolean; // Boolean!
@@ -102,18 +155,65 @@ export interface NexusGenRootTypes {
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   ArtistOrderByInput: NexusGenInputs['ArtistOrderByInput'];
   ArtistWhereUniqueInput: NexusGenInputs['ArtistWhereUniqueInput'];
+  GroupMemberWhereUniqueInput: NexusGenInputs['GroupMemberWhereUniqueInput'];
+  GroupOrderByInput: NexusGenInputs['GroupOrderByInput'];
+  GroupWhereUniqueInput: NexusGenInputs['GroupWhereUniqueInput'];
+  Group_members_group_id_idol_id_keyCompoundUniqueInput: NexusGenInputs['Group_members_group_id_idol_id_keyCompoundUniqueInput'];
   UserOrderByInput: NexusGenInputs['UserOrderByInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
+  GroupGender: NexusGenEnums['GroupGender'];
+  GroupStatus: NexusGenEnums['GroupStatus'];
   OrderByArg: NexusGenEnums['OrderByArg'];
 }
 
 export interface NexusGenFieldTypes {
   Artist: { // field return type
+    age: number | null; // Int
+    birth_date: any | null; // DateTime
+    koreanAge: number | null; // Int
     stage_name: string | null; // String
+  }
+  Group: { // field return type
+    companyName: string | null; // String
+    createdAt: any | null; // DateTime
+    debutDate: any | null; // DateTime
+    debutDatePrecision: string | null; // String
+    description: string | null; // String
+    disbandDate: any | null; // DateTime
+    disbandDatePrecision: string | null; // String
+    discordServerId: string | null; // String
+    facebookUsername: string | null; // String
+    fanCafeId: string | null; // String
+    fandomName: string | null; // String
+    gender: NexusGenEnums['GroupGender']; // GroupGender!
+    id: number; // Int!
+    instagramUsername: string | null; // String
+    isSubunit: boolean; // Boolean!
+    koreanName: string; // String!
+    likeCount: number; // Int!
+    likedBy: NexusGenRootTypes['User'][]; // [User!]!
+    members: NexusGenRootTypes['GroupMember'][]; // [GroupMember!]!
+    name: string; // String!
+    parentGroup: NexusGenRootTypes['Group'] | null; // Group
+    spotifyId: string | null; // String
+    status: NexusGenEnums['GroupStatus']; // GroupStatus!
+    subunits: NexusGenRootTypes['Group'][]; // [Group!]!
+    tiktokUsername: string | null; // String
+    type: string | null; // String
+    updatedAt: any | null; // DateTime
+    vliveId: string | null; // String
+    websiteUrl: string | null; // String
+    youtubeId: string | null; // String
+  }
+  GroupMember: { // field return type
+    artist: NexusGenRootTypes['Artist']; // Artist!
+    group: NexusGenRootTypes['Group']; // Group!
   }
   Query: { // field return type
     artist: NexusGenRootTypes['Artist'] | null; // Artist
     artists: NexusGenRootTypes['Artist'][]; // [Artist!]!
+    group: NexusGenRootTypes['Group'] | null; // Group
+    groups: NexusGenRootTypes['Group'][]; // [Group!]!
     user: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][]; // [User!]!
   }
@@ -129,6 +229,18 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenArgTypes {
+  Group: {
+    members: { // args
+      cursor?: NexusGenInputs['GroupMemberWhereUniqueInput'] | null; // GroupMemberWhereUniqueInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+    }
+    subunits: { // args
+      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+    }
+  }
   Query: {
     artist: { // args
       where: NexusGenInputs['ArtistWhereUniqueInput']; // ArtistWhereUniqueInput!
@@ -136,6 +248,15 @@ export interface NexusGenArgTypes {
     artists: { // args
       cursor?: NexusGenInputs['ArtistWhereUniqueInput'] | null; // ArtistWhereUniqueInput
       orderBy?: NexusGenInputs['ArtistOrderByInput'] | null; // ArtistOrderByInput
+      skip?: number | null; // Int
+      take?: number | null; // Int
+    }
+    group: { // args
+      where: NexusGenInputs['GroupWhereUniqueInput']; // GroupWhereUniqueInput!
+    }
+    groups: { // args
+      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
+      orderBy?: NexusGenInputs['GroupOrderByInput'] | null; // GroupOrderByInput
       skip?: number | null; // Int
       take?: number | null; // Int
     }
@@ -156,11 +277,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Artist" | "Query" | "User";
+export type NexusGenObjectNames = "Artist" | "Group" | "GroupMember" | "Query" | "User";
 
-export type NexusGenInputNames = "ArtistOrderByInput" | "ArtistWhereUniqueInput" | "UserOrderByInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "ArtistOrderByInput" | "ArtistWhereUniqueInput" | "GroupMemberWhereUniqueInput" | "GroupOrderByInput" | "GroupWhereUniqueInput" | "Group_members_group_id_idol_id_keyCompoundUniqueInput" | "UserOrderByInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = "OrderByArg";
+export type NexusGenEnumNames = "GroupGender" | "GroupStatus" | "OrderByArg";
 
 export type NexusGenInterfaceNames = never;
 
