@@ -14,8 +14,8 @@ export const schema = makeSchema({
   types,
   plugins: [nexusPrisma],
   outputs: {
-    typegen: join(__dirname, "generated", "index.d.ts"),
-    schema: join(__dirname, "generated", "schema.graphql"),
+    typegen: join(process.cwd(), "generated", "index.d.ts"),
+    schema: join(process.cwd(), "generated", "schema.graphql"),
   },
   typegenAutoConfig: {
     sources: [

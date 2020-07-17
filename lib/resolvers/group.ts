@@ -41,7 +41,7 @@ export const Group = objectType({
     t.field("gender", {
       type: "GroupGender",
       async resolve(group, args, ctx) {
-        const idols = await ctx.db.artists.findMany({
+        const idols = await ctx.db.idols.findMany({
           include: {
             genders: true,
           },

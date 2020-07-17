@@ -15,7 +15,7 @@ query {
 }
 `;
 
-const endpoint = `${process.env.NEXT_PUBLIC_BASE_URL}/api`;
+const endpoint = `/api`;
 
 const apolloServer = new ApolloServer({
   schema,
