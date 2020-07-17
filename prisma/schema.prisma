@@ -1,0 +1,445 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["linux-musl", "native"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  access_token         String?
+  access_token_expires DateTime?
+  compound_id          String
+  created_at           DateTime  @default(now())
+  id                   Int       @default(autoincrement()) @id
+  provider_account_id  String
+  provider_id          String
+  provider_type        String
+  refresh_token        String?
+  updated_at           DateTime  @default(now())
+  user_id              String
+  users                User      @relation(fields: [user_id], references: [id])
+
+  @@map("accounts")
+}
+
+model Company {
+  created_at             DateTime       @default(now())
+  defunct_date           DateTime?
+  defunct_date_precision String?        @default("FULL")
+  founded_date           DateTime?
+  founded_date_precision String?        @default("FULL")
+  id                     Int            @default(autoincrement()) @unique
+  logo                   String?
+  name                   String         @id
+  updated_at             DateTime?      @default(now())
+  group_companies        GroupCompany[]
+  groups                 Group[]
+
+  @@map("companies")
+}
+
+model FlywaySchemaHistory {
+  checksum       Int?
+  description    String
+  execution_time Int
+  installed_by   String
+  installed_on   DateTime @default(now())
+  installed_rank Int      @id
+  script         String
+  success        Boolean
+  type           String
+  version        String?
+
+  @@index([success], name: "flyway_schema_history_s_idx")
+  @@map("flyway_schema_history")
+}
+
+model genders {
+  comment String
+  gender  String   @id
+  idols   Artist[]
+}
+
+model GroupAlias {
+  alias      String
+  created_at DateTime? @default(now())
+  group_id   Int
+  updated_at DateTime? @default(now())
+  groups     Group     @relation(fields: [group_id], references: [id])
+
+  @@id([alias, group_id])
+  @@map("group_aliases")
+}
+
+model GroupCompany {
+  comment       String?
+  company_id    Int
+  end_date      DateTime?
+  group_id      Int
+  id            Int       @default(autoincrement()) @id
+  reference_url String?
+  start_date    DateTime
+  companies     Company   @relation(fields: [company_id], references: [id])
+  groups        Group     @relation(fields: [group_id], references: [id])
+
+  @@map("group_companies")
+}
+
+model group_genders {
+  comment String
+  gender  String @id
+}
+
+model GroupHiatus {
+  end_date      DateTime?
+  group_id      Int
+  id            Int       @default(autoincrement()) @id
+  reference_url String
+  start_date    DateTime
+  group         Group     @relation(fields: [group_id], references: [id])
+
+  @@map("group_hiatuses")
+}
+
+model GroupMemberRole {
+  id            Int         @default(autoincrement()) @id
+  member_id     Int
+  role_name     String
+  group_members GroupMember @relation(fields: [member_id], references: [id])
+
+  @@map("group_member_roles")
+  @@unique([member_id, role_name], name: "group_member_roles_member_id_role_name_key")
+}
+
+model group_member_status {
+  comment String
+  status  String @id
+}
+
+model GroupMember {
+  created_at               DateTime?         @default(now())
+  departure_date           DateTime?
+  departure_date_precision String?           @default("FULL")
+  group_id                 Int
+  id                       Int               @default(autoincrement()) @id
+  idol_id                  Int
+  join_date                DateTime?
+  join_date_precision      String?           @default("FULL")
+  updated_at               DateTime?         @default(now())
+  group                    Group             @relation(fields: [group_id], references: [id])
+  artist                   Artist            @relation(fields: [idol_id], references: [id])
+  group_member_roles       GroupMemberRole[]
+
+  @@index([group_id], name: "group_members_group_id_idx")
+  @@map("group_members")
+  @@unique([group_id, idol_id], name: "group_members_group_id_idol_id_key")
+}
+
+model group_status {
+  comment String
+  status  String  @id
+  groups  Group[]
+}
+
+model group_types {
+  comment String
+  type    String @default("GROUP") @id
+}
+
+model Group {
+  banner_id              Int?
+  company_name           String?
+  created_at             DateTime?       @default(now())
+  debut_date             DateTime?
+  debut_date_precision   String?         @default("FULL")
+  description            String?
+  disband_date           DateTime?
+  disband_date_precision String?         @default("FULL")
+  discord_server_id      String?
+  facebook_username      String?
+  fan_cafe_id            String?
+  fandom_name            String?
+  id                     Int             @default(autoincrement()) @id
+  image_id               Int?
+  instagram_username     String?
+  korean_name            String
+  melon_id               Int?            @unique
+  name                   String
+  parent_group_id        Int?
+  spotify_id             String?
+  status                 String          @default("ACTIVE")
+  tiktok_username        String?
+  twitter_handle         String?
+  type                   String?
+  updated_at             DateTime?       @default(now())
+  vlive_id               String?
+  website_url            String?
+  youtube_id             String?
+  banner                 media?          @relation("Group_banner_idTomedia", fields: [banner_id], references: [id])
+  companies              Company?        @relation(fields: [company_name], references: [name])
+  image                  media?          @relation("Group_image_idTomedia", fields: [image_id], references: [id])
+  parent_group            Group?          @relation("GroupToGroup_parent_group_id", fields: [parent_group_id], references: [id])
+  group_status           group_status    @relation(fields: [status], references: [status])
+  group_aliases          GroupAlias[]
+  group_companies        GroupCompany[]
+  group_hiatuses         GroupHiatus[]
+  group_members          GroupMember[]
+  subunits               Group[]         @relation("GroupToGroup_parent_group_id")
+  idols                  Artist[]
+  releases               Release[]
+  songs                  Song[]
+  user_group_likes       UserGroupLike[]
+
+  @@map("groups")
+}
+
+model ArtistAlias {
+  alias      String
+  created_at DateTime @default(now())
+  id         Int      @default(autoincrement()) @id
+  idol_id    Int
+  updated_at DateTime @default(now())
+  artists    Artist   @relation(fields: [idol_id], references: [id])
+
+  @@map("idol_aliases")
+  @@unique([alias, idol_id], name: "idol_aliases_alias_idol_id_key")
+}
+
+model Artist {
+  banner_id            Int?
+  birth_city           String?
+  birth_date           DateTime?
+  birth_date_precision String?       @default("DAY")
+  blood_type           String?
+  country_of_origin    String?
+  created_at           DateTime?     @default(now())
+  description          String?
+  full_name            String?
+  gender               String?
+  height               Int?
+  id                   Int           @default(autoincrement()) @id
+  image_id             Int?
+  instagram_username   String?
+  korean_stage_name    String?
+  melon_id             Int?          @unique
+  native_name          String?
+  primary_group_id     Int?
+  stage_name           String?
+  thumbnail            String?
+  twitter_handle       String?
+  updated_at           DateTime?     @default(now())
+  weight               Int?
+  youtube_id           String?
+  banner               media?        @relation("Artist_banner_idTomedia", fields: [banner_id], references: [id])
+  genders              genders?      @relation(fields: [gender], references: [gender])
+  image                media?        @relation("Artist_image_idTomedia", fields: [image_id], references: [id])
+  group                Group?        @relation(fields: [primary_group_id], references: [id])
+  group_members        GroupMember[]
+  aliases              ArtistAlias[]
+
+  @@map("idols")
+}
+
+model media {
+  created_at                     DateTime  @default(now())
+  id                             Int       @default(autoincrement()) @id
+  lg                             String?
+  md                             String?
+  object_position_x              Int       @default(50)
+  object_position_y              Int       @default(50)
+  original_url                   String?
+  slug                           String    @unique
+  sm                             String?
+  updated_at                     DateTime? @default(now())
+  groups_groups_banner_idTomedia Group[]   @relation("Group_banner_idTomedia")
+  groups_groups_image_idTomedia  Group[]   @relation("Group_image_idTomedia")
+  idols_idols_banner_idTomedia   Artist[]  @relation("Artist_banner_idTomedia")
+  idols_idols_image_idTomedia    Artist[]  @relation("Artist_image_idTomedia")
+  releases                       Release[]
+  users_mediaTousers_avatar_id   User[]    @relation("User_avatar_idTomedia")
+  users_mediaTousers_banner_id   User[]    @relation("User_banner_idTomedia")
+}
+
+model media_types {
+  comment   String
+  type_name String @id
+}
+
+model ReleaseSong {
+  created_at     DateTime? @default(now())
+  date_added     DateTime?
+  group_id       Int
+  is_title_track Boolean   @default(false)
+  release_id     Int
+  song_id        Int
+  updated_at     DateTime? @default(now())
+  releases       Release   @relation(fields: [release_id], references: [id])
+  songs          Song      @relation(fields: [song_id], references: [id])
+
+  @@id([release_id, group_id, song_id])
+  @@map("release_songs")
+}
+
+model release_types {
+  comment  String
+  type     String    @id
+  releases Release[]
+}
+
+model Release {
+  album_cover            String?
+  album_cover_id         Int?
+  created_at             DateTime?     @default(now())
+  description            String?
+  genre                  String?
+  group_id               Int
+  id                     Int           @default(autoincrement()) @id
+  melon_id               Int?
+  name                   String
+  release_date           DateTime?
+  release_date_precision String        @default("FULL")
+  spotify_id             String?
+  type                   String        @default("STUDIO")
+  updated_at             DateTime?     @default(now())
+  cover                  media?        @relation(fields: [album_cover_id], references: [id])
+  groups                 Group         @relation(fields: [group_id], references: [id])
+  release_types          release_types @relation(fields: [type], references: [type])
+  release_songs          ReleaseSong[]
+  songs                  Song[]
+
+  @@map("releases")
+}
+
+model Role {
+  role_name  String     @id
+  user_roles UserRole[]
+
+  @@map("roles")
+}
+
+model Session {
+  expire DateTime
+  sess   String
+  sid    String   @id
+
+  @@map("sessions")
+}
+
+model Song {
+  created_at    DateTime?     @default(now())
+  group_id      Int
+  id            Int           @default(dbgenerated()) @unique
+  korean_name   String?
+  language      String        @default("KR")
+  length        Int?
+  melon_id      Int?
+  mv_link       String?
+  name          String?
+  release_id    Int
+  spotify_link  String?
+  updated_at    DateTime?     @default(now())
+  groups        Group         @relation(fields: [group_id], references: [id])
+  releases      Release       @relation(fields: [release_id], references: [id])
+  release_songs ReleaseSong[]
+
+  @@id([id, group_id])
+  @@map("songs")
+}
+
+model Submission {
+  comment    String?
+  created_at DateTime @default(now())
+  id         Int      @default(autoincrement()) @id
+  updated_at DateTime @default(now())
+  user_id    String?
+  users      User?    @relation(fields: [user_id], references: [id])
+
+  @@map("submissions")
+}
+
+model UserGroupLike {
+  created_at DateTime @default(now())
+  group_id   Int
+  id         Int      @default(autoincrement()) @id
+  updated_at DateTime @default(now())
+  user_id    String
+  groups     Group    @relation(fields: [group_id], references: [id])
+  users      User     @relation(fields: [user_id], references: [id])
+
+  @@index([group_id], name: "user_group_likes_group_id_idx")
+  @@index([user_id], name: "user_group_likes_user_idx")
+  @@map("user_group_likes")
+  @@unique([group_id, user_id], name: "user_group_likes_group_id_user_id_key")
+  @@unique([user_id, group_id], name: "user_group_likes_user_id_group_id_key")
+}
+
+model UserRefreshToken {
+  created_at DateTime  @default(now())
+  expires_in DateTime
+  id         Int       @default(autoincrement()) @id
+  is_valid   Boolean   @default(true)
+  updated_at DateTime? @default(now())
+  user_id    String
+  users      User      @relation(fields: [user_id], references: [id])
+
+  @@map("user_refresh_tokens")
+}
+
+model UserRole {
+  created_at DateTime @default(now())
+  id         Int      @default(autoincrement()) @id
+  role       String   @default("USER")
+  user_id    String
+  roles      Role     @relation(fields: [role], references: [role_name])
+  users      User     @relation(fields: [user_id], references: [id])
+
+  @@map("user_roles")
+  @@unique([role, user_id], name: "unq_names")
+}
+
+model user_types {
+  comment String
+  type    String @id
+}
+
+model User {
+  avatar_id           Int?
+  banned              Boolean            @default(false)
+  banner_id           Int?
+  bio                 String?
+  created_at          DateTime           @default(now())
+  discord_user_id     String?
+  discord_username    String?
+  email               String             @unique
+  email_verified      Boolean?
+  id                  String             @default(dbgenerated()) @id
+  image               String?
+  locale              String?
+  password_hash       String?
+  slug                String?            @unique
+  twitter_user_id     String?
+  updated_at          DateTime           @default(now())
+  username            String
+  avatar              media?             @relation("User_avatar_idTomedia", fields: [avatar_id], references: [id])
+  banner              media?             @relation("User_banner_idTomedia", fields: [banner_id], references: [id])
+  accounts            Account[]
+  submissions         Submission[]
+  user_group_likes    UserGroupLike[]
+  user_refresh_tokens UserRefreshToken[]
+  user_roles          UserRole[]
+
+  @@map("users")
+}
+
+model VerificationRequest {
+  created   DateTime
+  expires   DateTime
+  id        Int      @default(autoincrement()) @id
+  identifer String
+  token     String
+
+  @@map("verification_request")
+}

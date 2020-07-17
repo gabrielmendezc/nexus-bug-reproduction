@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext"],
+    "types": ["pages/api/nexus-typegen.ts"],
+    "esModuleInterop": true
+  },
+  "include": ["./src"]
+}
